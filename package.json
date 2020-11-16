@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "concurrently": "^4.1.0",
+    "concurrently": "^5.3.0",
+    "json-server": "^0.16.3",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5",
-    "json-server": "^0.12.1"
+    "react-scripts": "^4.0.0"
   },
   "scripts": {
     "start": "npm run build && npm run json-serve",

@@ -8,18 +8,17 @@ const port = process.env.PORT || 5002;
 
 server.use(middlewares);
 
+server.use((req, res, next) => {
+    const isApiRoute = req.originalUrl.includes('/api/');
+    if (isApiRoute) {
+        return next();
+    }
+    return res.sendFile(path.join(__dirname, './build/index.html'));
+});
+
 server.use(jsonServer.rewriter({
     '/api/*': '/$1'
 }));
-
-server.use((req, res, next) => {
-    // use originalUrl since other middleware is likely reassigning req.url
-    const isApiRoute = req.originalUrl.includes('/api/');
-
-    if (isApiRoute) return next();
-
-    return res.sendFile(path.join(__dirname, './build/index.html'));
-});
 
 server.use(router);
 
